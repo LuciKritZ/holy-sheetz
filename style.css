@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.display-center {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.page-actions-container {
+  height: 3rem;
+  background-color: #218c74;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 1rem;
+}
+
+.page-action {
+  margin: 0.5rem;
+  color: #f1f2f6;
+}
+
+.cell-props-actions-container {
+  height: 3rem;
+  background-color: #ecf0f1;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+.cell-props-actions-container > * {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.cell-props-actions-container > select {
+  border: none;
+  border-radius: 2px;
+  outline: none;
+}
+
+.font-family-properties {
+  padding: 0.2rem;
+}
+
+.font-size-properties {
+  padding: 0.2rem;
+}
+
+.formula-actions-container {
+  height: 2rem;
+  background-color: #ecf0f1;
+  padding-left: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.formula-actions-container > * {
+  display: inline-block;
+  margin-right: 0.7rem;
+}
+
+.formula-actions-container > input {
+  border: none;
+  outline: none;
+  height: 70%;
+}
+
+.formula-icon {
+  width: 1.3rem;
+}
+
+.address-bar {
+  width: 5rem;
+  text-align: center;
+}
+
+.formula-bar {
+  width: calc(100vw - 5rem - 0.7rem - 0.7rem - 0.7rem)
+}
+
+.sheets-actions-container {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  gap: 1rem;
+  background-color: #ecf0f1;
+}
+
+.sheets-actions-container> * {
+  display: inline-block;
+}
+
+.sheet-add-icon {
+  width: 2vw;
+}
+
+.sheets-folder-container {
+  height: 80%;
+  width: calc(100vw - 2vw);
+  display: flex;
+  align-items: center;
+}
+
+.sheet-folder {
+  text-decoration: underline;
+  font-weight: bold;
+  text-decoration-thickness: 3px;
+  font-size: 0.9rem;
+}
+
+.grid-container {
+  height: calc(100vh - 3rem - 3rem - 2rem - 3rem);
+  position: relative;
+  overflow: auto;
+  background-color: #ecf0f1;
+}
+
+.top-left-box {
+  height: 2rem;
+  width: 2rem;
+  background-color: #747d8c;
+  position: fixed;
+  z-index: 5;
+}
+
+.address-col-container {
+  position: sticky;
+  top: 2rem;
+  left: 0;
+}
+
+.cells-container {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+}
+
+.address-row-container {
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 2rem;
+  z-index: 5;
+}
+
+.address-column {
+  height: 2rem;
+  width: 2rem;
+  border: 1px solid #dfe4ea;
+}
+
+.address-row {
+  height: 2rem;
+  width: 5rem;
+  text-align: center;
+  border: 1px solid #dfe4ea;
+}
+
+.row-container {
+  display: flex;
+}
+
+.cell {
+  height: 2rem;
+  width: 5rem;
+  border: 1px solid #dfe4ea;
+  /* background-color: white; */
+  outline: none;
+  z-index: 0;
+}
