@@ -1,16 +1,9 @@
 let rows = 100;
 let columns = 26;
 
-let addressColumnContainer = document.querySelector('.address-col-container');
-let addressRowContainer = document.querySelector('.address-row-container');
-let cellsContainer = document.querySelector('.cells-container');
-let addressBarInput = document.querySelector('.address-bar');
-
 function addListenerForAddressBarDisplay(cell, rowId, columnId) {
-  cell.addEventListener('click', (e) => {
-    rowId = rowId + 1;
-    columnId = String.fromCharCode(65 + columnId);
-    addressBarInput.value = `${columnId}:${rowId}`;
+  cell.addEventListener('click', (_e) => {
+    addressBarInput.value = encodeCellLocation(columnId, rowId);
   });
 }
 
@@ -34,9 +27,16 @@ for (let i = 0; i < rows; i++) {
   for (let j = 0; j < columns; j++) {
     let cell = document.createElement('div');
     cell.setAttribute('contenteditable', 'true');
+    cell.setAttribute('rowId', i);
+    cell.setAttribute('columnId', j);
+    cell.setAttribute('spellcheck', false);
     cell.classList.add('cell');
     cellRowContainer.appendChild(cell);
     addListenerForAddressBarDisplay(cell, i, j);
   }
   cellsContainer.appendChild(cellRowContainer);
 }
+
+// Attach
+let firstCell = document.querySelector('.cell');
+firstCell.click();

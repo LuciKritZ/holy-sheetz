@@ -1,0 +1,6 @@
+1. Modify cell properties
+2. Storing the cell properties
+3. Two way binding:
+  1. Changing the stored cell properties whenever a user changes a cell properties.
+  2. Show the same changes in UI.
+4. 
