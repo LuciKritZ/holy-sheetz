@@ -37,6 +37,7 @@ body {
 .cell-props-actions-container > * {
   display: inline-block;
   margin-right: 1rem;
+  cursor: pointer;
 }
 
 .cell-props-actions-container > select {
@@ -51,6 +52,20 @@ body {
 
 .font-size-properties {
   padding: 0.2rem;
+}
+
+.color-property {
+  position: relative;
+}
+
+.color-property>input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
 }
 
 .formula-actions-container {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css" >
+  <link rel="stylesheet" href="./styles/style.css" >
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <title>HolySheetZ</title>
 </head>
@@ -37,24 +37,36 @@
       <option value="18">18</option>
       <option value="20">20</option>
     </select>
-    <span class="material-icons">
+    <span class="material-icons font-bold">
       format_bold
     </span>
-    <span class="material-icons">
+    <span class="material-icons font-italics">
       format_italic
     </span>
-    <span class="material-icons">
+    <span class="material-icons font-underline">
       format_underlined
     </span>
-    <span class="material-icons">
+    <span class="left material-icons text-alignment ">
       format_align_left
     </span>
-    <span class="material-icons">
+    <span class="center material-icons text-alignment ">
       format_align_center
     </span>
-    <span class="material-icons">
+    <span class="right material-icons text-alignment ">
       format_align_right
     </span>
+    <div class="color-property">
+      <span class="material-icons">
+        format_color_text
+      </span>
+      <input class="font-color-property" type="color" name="" id="">
+    </div>
+    <div class="color-property">
+      <span class="material-icons">
+        format_color_fill
+      </span>
+      <input class="bg-color-property" type="color" name="" id="">
+    </div>
   </div>
   <div class="formula-actions-container">
     <input type="text" readonly class="address-bar">
@@ -78,6 +90,9 @@
       <div class="sheet-folder">Untitled</div>
     </div>
   </div>
-  <script src="./script.js" />
+  <script src="scripts/selectors.script.js"></script>
+  <script src="scripts/helpers.script.js"></script>
+  <script src="scripts/grid.script.js"></script>
+  <script src="scripts/cell.script.js"></script>
 </body>
 </html>
