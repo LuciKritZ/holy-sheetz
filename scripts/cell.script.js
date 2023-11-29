@@ -1,3 +1,14 @@
+// Cell properties selectors
+const bold = document.querySelector('.font-bold');
+const italics = document.querySelector('.font-italics');
+const underline = document.querySelector('.font-underline');
+const fontSize = document.querySelector('.font-size-properties');
+const fontFamily = document.querySelector('.font-family-properties');
+const color = document.querySelector('.font-color-property');
+const bgColor = document.querySelector('.bg-color-property');
+const alignment = document.querySelectorAll('.text-alignment');
+const [leftAlign, centerAlign, rightAlign] = alignment;
+
 /**
  * File used for Storage
  */
@@ -16,6 +27,9 @@ for (let i = 0; i < rows; i++) {
       fontSize: 14,
       color: '#000000',
       bgColor: '#000000',
+      value: '',
+      formula: '',
+      children: [],
     };
     sheetRow.push(sheetColumn);
   }
@@ -27,7 +41,7 @@ for (let i = 0; i < rows; i++) {
 // Bold property
 bold.addEventListener('click', (e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.bold = !cellProp.bold;
@@ -41,7 +55,7 @@ bold.addEventListener('click', (e) => {
 // Italics property
 italics.addEventListener('click', (e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.italics = !cellProp.italics;
@@ -55,7 +69,7 @@ italics.addEventListener('click', (e) => {
 // Underline property
 underline.addEventListener('click', (e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.underline = !cellProp.underline;
@@ -69,7 +83,7 @@ underline.addEventListener('click', (e) => {
 // Font size property
 fontSize.addEventListener('change', (e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.fontSize = fontSize.value;
@@ -81,7 +95,7 @@ fontSize.addEventListener('change', (e) => {
 // Font family property
 fontFamily.addEventListener('change', (_e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.fontFamily = fontFamily.value;
@@ -93,7 +107,7 @@ fontFamily.addEventListener('change', (_e) => {
 // Font color
 color.addEventListener('change', (_e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.color = color.value;
@@ -105,7 +119,7 @@ color.addEventListener('change', (_e) => {
 // background color
 bgColor.addEventListener('change', (_e) => {
   let address = addressBarInput.value;
-  let [cell, cellProp] = findActiveCell(address);
+  let [cell, cellProp] = getCellAndCellProps(address);
 
   // Modification
   cellProp.bgColor = bgColor.value;
@@ -118,7 +132,7 @@ bgColor.addEventListener('change', (_e) => {
 alignment.forEach((alignmentElement) => {
   alignmentElement.addEventListener('click', (_e) => {
     let address = addressBarInput.value;
-    let [cell, cellProp] = findActiveCell(address);
+    let [cell, cellProp] = getCellAndCellProps(address);
 
     let alignmentValue = _e.target.classList[0];
     cellProp.alignment = alignmentValue;
@@ -156,7 +170,7 @@ for (let i = 0; i < allCells.length; i++) {
 function addListenerToAttachCellProperties(cell) {
   cell.addEventListener('click', (_e) => {
     let address = addressBarInput.value;
-    let [rowId, columnId] = decodeCellLocation(address);
+    let [columnId, rowId] = decodeCellLocation(address);
     let cellProp = sheetDB[rowId][columnId];
 
     // apply cell properties
@@ -202,5 +216,9 @@ function addListenerToAttachCellProperties(cell) {
       default:
         break;
     }
+
+    let formulaBar = document.querySelector('.formula-bar');
+    formulaBar.value = cellProp.formula;
+    cell.value = cellProp.value;
   });
 }

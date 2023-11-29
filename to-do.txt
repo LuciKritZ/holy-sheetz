@@ -3,4 +3,11 @@
 3. Two way binding:
   1. Changing the stored cell properties whenever a user changes a cell properties.
   2. Show the same changes in UI.
-4. 
+4. Implement dynamic formula bar actions in the UI
+  1. Formula Evaluation - Enter event
+    a. Normal expression: Basic arithmetic
+    b. Dependency expression: Dependent on other cells (eg A1 + A2 + 10)
+  2. In between Data update: Recursively using tree/graph - Parent child relationship
+  3. Push/Pop children dynamically based on the formula.
+  4. Changing already set value/hardcoding value instead of formula - Remove formula - Remove parent relations - Update child relations
+  

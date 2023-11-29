@@ -1,6 +1,11 @@
 let rows = 100;
 let columns = 26;
 
+const addressColumnContainer = document.querySelector('.address-col-container');
+const addressRowContainer = document.querySelector('.address-row-container');
+const cellsContainer = document.querySelector('.cells-container');
+let addressBarInput = document.querySelector('.address-bar');
+
 function addListenerForAddressBarDisplay(cell, rowId, columnId) {
   cell.addEventListener('click', (_e) => {
     addressBarInput.value = encodeCellLocation(columnId, rowId);
@@ -38,5 +43,5 @@ for (let i = 0; i < rows; i++) {
 }
 
 // Attach
-let firstCell = document.querySelector('.cell');
+const firstCell = document.querySelector('.cell');
 firstCell.click();
