@@ -5,6 +5,7 @@ for (let i = 0; i < rows; i++) {
   for (let j = 0; j < columns; j++) {
     let cell = document.querySelector(`.cell[rowId="${i}"][columnId="${j}"]`);
     cell.addEventListener('blur', (e) => {
+      let address = addressBarInput.value;
       let [activeCell, activeCellProps] = getCellAndCellProps(address);
       let enteredData = activeCell.innerText;
 
