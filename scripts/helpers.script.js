@@ -1,5 +1,5 @@
-let ACTIVE_COLOR_PROPERTY = '#d1d8e0';
-let INACTIVE_COLOR_PROPERTY = '#ecf0f1';
+const ACTIVE_COLOR_PROPERTY = '#d1d8e0';
+const INACTIVE_COLOR_PROPERTY = '#ecf0f1';
 
 /**
  * encodeCellLocation
