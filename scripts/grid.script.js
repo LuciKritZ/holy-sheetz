@@ -8,7 +8,7 @@ const cellsContainer = document.querySelector('.cells-container');
 let addressBarInput = document.querySelector('.address-bar');
 
 /**
- * addListenerForAddressBarDisplay
+ * @function addListenerForAddressBarDisplay
  * Adds click listener to link the address bar with the correct rowId and columnId of each cell.
  * @param {HTMLElement} cell
  * @param {integer} rowId

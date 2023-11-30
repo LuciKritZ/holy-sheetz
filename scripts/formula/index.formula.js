@@ -29,7 +29,7 @@ for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
   }
 }
 
-formulaBar.addEventListener('keydown', (e) => {
+formulaBar.addEventListener('keydown', async (e) => {
   let inputFormula = formulaBar.value;
 
   // When user decides to enter the formula
@@ -53,15 +53,27 @@ formulaBar.addEventListener('keydown', (e) => {
     });
 
     // Check whether the formula is cyclic or not, only then proceed.
-    let isCyclic = isGraphCyclic(graphComponentMatrix);
+    let cyclicLocation = isGraphCyclic(graphComponentMatrix);
 
     /**
      * If graph is cyclic:
      * 1. Send an alert
      * 2. Break the relations made by addChildToGraphComponent
      */
-    if (isCyclic) {
-      alert('Cyclic formula detected');
+    if (cyclicLocation) {
+      // alert('Cyclic formula detected');
+      let shouldShowTrace = confirm(
+        'Cyclic formula detected, do you wish to trace your cells path?'
+      );
+
+      while (shouldShowTrace) {
+        await getGraphCyclicTracePath(graphComponentMatrix, cyclicLocation);
+        // Stack tracing will continue until user decides to opt out.
+        shouldShowTrace = confirm(
+          'Cyclic formula detected, do you wish to trace your stack path?'
+        );
+      }
+
       addOrRemoveChildInGraphMatrix({
         formula: inputFormula,
         childAddress: address,

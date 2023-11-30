@@ -2,7 +2,7 @@ const ACTIVE_COLOR_PROPERTY = '#d1d8e0';
 const INACTIVE_COLOR_PROPERTY = '#ecf0f1';
 
 /**
- * encodeCellLocation
+ * @function encodeCellLocation
  * Encodes cell location in columnIdRowId format.
  * Eg: 0,0 -> A1
  * @param {integer} columnId
@@ -14,7 +14,7 @@ function encodeCellLocation(columnId, rowId) {
 }
 
 /**
- * decodeCellLocation
+ * @function decodeCellLocation
  * Decodes rowId and columnId from a cell location.
  * Eg: A1 -> [0,0]
  * @param {string} encodedCell
@@ -28,7 +28,7 @@ function decodeCellLocation(encodedCell) {
 }
 
 /**
- * getCellAndCellProps
+ * @function getCellAndCellProps
  * Returns the cell and cell properties on the basis of provided address.
  * @param {string} address
  * @returns {array}
@@ -45,7 +45,7 @@ function getCellAndCellProps(address) {
 // Helper functions for formula
 
 /**
- * evaluateFormula
+ * @function evaluateFormula
  * Evaluates the formula provided by the user in formula bar by using eval.
  * @param {string} formula
  * @returns {string}
@@ -64,7 +64,7 @@ function evaluateFormula(formula) {
 }
 
 /**
- * setCellUIAndCellPropFormula
+ * @function setCellUIAndCellPropFormula
  * Synchronizes the properties of the cell in UI as well as the storage.
  * @param {string} address
  * @param {string} evaluatedValue
@@ -83,7 +83,7 @@ function setCellUIAndCellPropFormula(address, evaluatedValue, formula) {
 }
 
 /**
- * manipulateChildCellsToParentCell
+ * @function manipulateChildCellsToParentCell
  * Performs addition or removal of child cells to their respective parent cells.
  * @param {string} manipulateChildCellsToParentCell.formula
  * @param {string} manipulateChildCellsToParentCell.operation
@@ -116,7 +116,7 @@ function manipulateChildCellsToParentCell({ formula, operation = 'add' }) {
 }
 
 /**
- * updateChildrenCells
+ * @function updateChildrenCells
  * A recursive function to update the children cells to their parent cells based on their formula provided by the user.
  * @param {string} parentAddress
  * @returns {null}
