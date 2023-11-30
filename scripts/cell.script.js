@@ -9,15 +9,12 @@ const bgColor = document.querySelector('.bg-color-property');
 const alignment = document.querySelectorAll('.text-alignment');
 const [leftAlign, centerAlign, rightAlign] = alignment;
 
-/**
- * File used for Storage
- */
-
+// Storage for mapping the required data of every cell
 let sheetDB = [];
 
-for (let i = 0; i < rows; i++) {
+for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
   let sheetRow = [];
-  for (let j = 0; j < columns; j++) {
+  for (let j = 0; j < DEFAULT_COLUMNS_COUNT; j++) {
     let sheetColumn = {
       bold: false,
       italics: false,
@@ -39,7 +36,7 @@ for (let i = 0; i < rows; i++) {
 
 // Two way Bindings
 // Bold property
-bold.addEventListener('click', (e) => {
+bold.addEventListener('click', (_e) => {
   let address = addressBarInput.value;
   let [cell, cellProp] = getCellAndCellProps(address);
 
@@ -47,13 +44,13 @@ bold.addEventListener('click', (e) => {
   cellProp.bold = !cellProp.bold;
   cell.style.fontWeight = cellProp.bold ? 'bold' : 'normal';
   bold.style.backgroundColor = cellProp.bold
-    ? activeColorProp
-    : inactiveColorProp;
+    ? ACTIVE_COLOR_PROPERTY
+    : INACTIVE_COLOR_PROPERTY;
   cell.focus();
 });
 
 // Italics property
-italics.addEventListener('click', (e) => {
+italics.addEventListener('click', (_e) => {
   let address = addressBarInput.value;
   let [cell, cellProp] = getCellAndCellProps(address);
 
@@ -61,13 +58,13 @@ italics.addEventListener('click', (e) => {
   cellProp.italics = !cellProp.italics;
   cell.style.fontStyle = cellProp.italics ? 'italic' : 'normal';
   italics.style.backgroundColor = cellProp.italics
-    ? activeColorProp
-    : inactiveColorProp;
+    ? ACTIVE_COLOR_PROPERTY
+    : INACTIVE_COLOR_PROPERTY;
   cell.focus();
 });
 
 // Underline property
-underline.addEventListener('click', (e) => {
+underline.addEventListener('click', (_e) => {
   let address = addressBarInput.value;
   let [cell, cellProp] = getCellAndCellProps(address);
 
@@ -75,13 +72,13 @@ underline.addEventListener('click', (e) => {
   cellProp.underline = !cellProp.underline;
   cell.style.textDecoration = cellProp.underline ? 'underline' : 'none';
   underline.style.backgroundColor = cellProp.underline
-    ? activeColorProp
-    : inactiveColorProp;
+    ? ACTIVE_COLOR_PROPERTY
+    : INACTIVE_COLOR_PROPERTY;
   cell.focus();
 });
 
 // Font size property
-fontSize.addEventListener('change', (e) => {
+fontSize.addEventListener('change', (_e) => {
   let address = addressBarInput.value;
   let [cell, cellProp] = getCellAndCellProps(address);
 
@@ -140,19 +137,19 @@ alignment.forEach((alignmentElement) => {
 
     switch (alignmentValue) {
       case 'left':
-        leftAlign.style.backgroundColor = activeColorProp;
-        centerAlign.style.backgroundColor = inactiveColorProp;
-        rightAlign.style.backgroundColor = inactiveColorProp;
+        leftAlign.style.backgroundColor = ACTIVE_COLOR_PROPERTY;
+        centerAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        rightAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
         break;
       case 'center':
-        leftAlign.style.backgroundColor = inactiveColorProp;
-        centerAlign.style.backgroundColor = activeColorProp;
-        rightAlign.style.backgroundColor = inactiveColorProp;
+        leftAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        centerAlign.style.backgroundColor = ACTIVE_COLOR_PROPERTY;
+        rightAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
         break;
       case 'right':
-        leftAlign.style.backgroundColor = inactiveColorProp;
-        centerAlign.style.backgroundColor = inactiveColorProp;
-        rightAlign.style.backgroundColor = activeColorProp;
+        leftAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        centerAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        rightAlign.style.backgroundColor = ACTIVE_COLOR_PROPERTY;
         break;
       default:
         break;
@@ -163,10 +160,17 @@ alignment.forEach((alignmentElement) => {
 
 let allCells = document.querySelectorAll('.cell');
 
+// Adding event listener to sync storageDB and UI
 for (let i = 0; i < allCells.length; i++) {
   addListenerToAttachCellProperties(allCells[i]);
 }
 
+/**
+ * addListenerToAttachCellProperties
+ * Adds click listener to perform the two way binding between the database and the UI.
+ * @param {HTMLElement} cell
+ * @returns {null}
+ */
 function addListenerToAttachCellProperties(cell) {
   cell.addEventListener('click', (_e) => {
     let address = addressBarInput.value;
@@ -185,33 +189,33 @@ function addListenerToAttachCellProperties(cell) {
 
     // Apply UI properties to container properties
     bold.style.backgroundColor = cellProp.bold
-      ? activeColorProp
-      : inactiveColorProp;
+      ? ACTIVE_COLOR_PROPERTY
+      : INACTIVE_COLOR_PROPERTY;
     italics.style.backgroundColor = cellProp.italics
-      ? activeColorProp
-      : inactiveColorProp;
+      ? ACTIVE_COLOR_PROPERTY
+      : INACTIVE_COLOR_PROPERTY;
     underline.style.backgroundColor = cellProp.underline
-      ? activeColorProp
-      : inactiveColorProp;
+      ? ACTIVE_COLOR_PROPERTY
+      : INACTIVE_COLOR_PROPERTY;
     fontSize.value = cellProp.fontSize;
     fontFamily.value = cellProp.fontFamily;
     color.value = cellProp.color;
     bgColor.value = cellProp.bgColor;
     switch (cellProp.alignment) {
       case 'left':
-        leftAlign.style.backgroundColor = activeColorProp;
-        centerAlign.style.backgroundColor = inactiveColorProp;
-        rightAlign.style.backgroundColor = inactiveColorProp;
+        leftAlign.style.backgroundColor = ACTIVE_COLOR_PROPERTY;
+        centerAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        rightAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
         break;
       case 'center':
-        leftAlign.style.backgroundColor = inactiveColorProp;
-        centerAlign.style.backgroundColor = activeColorProp;
-        rightAlign.style.backgroundColor = inactiveColorProp;
+        leftAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        centerAlign.style.backgroundColor = ACTIVE_COLOR_PROPERTY;
+        rightAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
         break;
       case 'right':
-        leftAlign.style.backgroundColor = inactiveColorProp;
-        centerAlign.style.backgroundColor = inactiveColorProp;
-        rightAlign.style.backgroundColor = activeColorProp;
+        leftAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        centerAlign.style.backgroundColor = INACTIVE_COLOR_PROPERTY;
+        rightAlign.style.backgroundColor = ACTIVE_COLOR_PROPERTY;
         break;
       default:
         break;

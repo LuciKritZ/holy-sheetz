@@ -1,8 +1,8 @@
 // Formula bar selector
 const formulaBar = document.querySelector('.formula-bar');
 
-for (let i = 0; i < rows; i++) {
-  for (let j = 0; j < columns; j++) {
+for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
+  for (let j = 0; j < DEFAULT_COLUMNS_COUNT; j++) {
     let cell = document.querySelector(`.cell[rowId="${i}"][columnId="${j}"]`);
     cell.addEventListener('blur', (e) => {
       let address = addressBarInput.value;
@@ -31,9 +31,11 @@ for (let i = 0; i < rows; i++) {
 
 formulaBar.addEventListener('keydown', (e) => {
   let inputFormula = formulaBar.value;
+
+  // When user decides to enter the formula
   if (e.key === 'Enter' && inputFormula) {
     let address = addressBarInput.value;
-    let [cell, cellProps] = getCellAndCellProps(address);
+    let [_cell, cellProps] = getCellAndCellProps(address);
 
     // If change in formula, evaluate it
     // Break old parent child relation, and add new parent child relation

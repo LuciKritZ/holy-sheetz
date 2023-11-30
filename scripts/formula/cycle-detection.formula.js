@@ -16,9 +16,9 @@
  */
 
 let graphComponentMatrix = [];
-for (let i = 0; i < rows; i++) {
+for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
   let row = [];
-  for (let j = 0; j < columns; j++) {
+  for (let j = 0; j < DEFAULT_COLUMNS_COUNT; j++) {
     // Basic array storage
     // More than 1 child relation (dependency)
     row.push([]);
@@ -32,7 +32,7 @@ for (let i = 0; i < rows; i++) {
  * @param {string} addOrRemoveChildInGraphMatrix.formula
  * @param {string} addOrRemoveChildInGraphMatrix.childAddress
  * @param {string} addOrRemoveChildInGraphMatrix.operation
- * @returns {null};
+ * @returns {null}
  */
 function addOrRemoveChildInGraphMatrix({
   formula,
@@ -73,7 +73,7 @@ function addOrRemoveChildInGraphMatrix({
  * isGraphCyclic
  * Returns a boolean, true -> cycle detected, false -> cycle not detected
  * @param {array} graphComponentMatrixSnapshot
- * @returns {boolean};
+ * @returns {boolean}
  */
 function isGraphCyclic(graphComponentMatrixSnapshot) {
   // Dependency [2D array] -> visited, dfsVisited
@@ -85,10 +85,10 @@ function isGraphCyclic(graphComponentMatrixSnapshot) {
   let dfsVisited = [];
 
   // Initialize 2D array for cycle detection
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
     let visitedRow = [];
     let dfsVisitedRow = [];
-    for (let j = 0; j < columns; j++) {
+    for (let j = 0; j < DEFAULT_COLUMNS_COUNT; j++) {
       // Pushing the default values to false
       visitedRow.push(false);
       dfsVisitedRow.push(false);
@@ -97,8 +97,8 @@ function isGraphCyclic(graphComponentMatrixSnapshot) {
     dfsVisited.push(dfsVisitedRow);
   }
 
-  for (let i = 0; i < rows; i++) {
-    for (let j = 0; j < columns; j++) {
+  for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
+    for (let j = 0; j < DEFAULT_COLUMNS_COUNT; j++) {
       if (!visited[i][j]) {
         let response = checkDFSCycleDetection({
           graphComponentMatrixSnapshot,
@@ -133,7 +133,7 @@ function isGraphCyclic(graphComponentMatrixSnapshot) {
  * @param {integer} checkDFSCycleDetection.sourceColumn
  * @param {array} checkDFSCycleDetection.visited
  * @param {array} checkDFSCycleDetection.dfsVisited
- * @returns {boolean};
+ * @returns {boolean}
  */
 function checkDFSCycleDetection({
   graphComponentMatrixSnapshot,
