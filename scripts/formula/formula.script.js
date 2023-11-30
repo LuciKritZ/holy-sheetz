@@ -44,6 +44,30 @@ formulaBar.addEventListener('keydown', (e) => {
       });
     }
 
+    addOrRemoveChildInGraphMatrix({
+      formula: inputFormula,
+      childAddress: address,
+      operation: 'add',
+    });
+
+    // Check whether the formula is cyclic or not, only then proceed.
+    let isCyclic = isGraphCyclic(graphComponentMatrix);
+
+    /**
+     * If graph is cyclic:
+     * 1. Send an alert
+     * 2. Break the relations made by addChildToGraphComponent
+     */
+    if (isCyclic) {
+      alert('Cyclic formula detected');
+      addOrRemoveChildInGraphMatrix({
+        formula: inputFormula,
+        childAddress: address,
+        operation: 'remove',
+      });
+      return;
+    }
+
     // To update UI and cellProp in DB
     let evaluatedValue = evaluateFormula(inputFormula);
     setCellUIAndCellPropFormula(address, evaluatedValue, inputFormula);

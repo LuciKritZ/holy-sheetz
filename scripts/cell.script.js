@@ -170,7 +170,7 @@ for (let i = 0; i < allCells.length; i++) {
 function addListenerToAttachCellProperties(cell) {
   cell.addEventListener('click', (_e) => {
     let address = addressBarInput.value;
-    let [columnId, rowId] = decodeCellLocation(address);
+    let [rowId, columnId] = decodeCellLocation(address);
     let cellProp = sheetDB[rowId][columnId];
 
     // apply cell properties

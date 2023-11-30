@@ -10,4 +10,16 @@
   2. In between Data update: Recursively using tree/graph - Parent child relationship
   3. Push/Pop children dynamically based on the formula.
   4. Changing already set value/hardcoding value instead of formula - Remove formula - Remove parent relations - Update child relations
-  
+5. Removing Cyclic Dependency of Parent Cell Tree:
+  1. The parent cell relationship can be concluded as a Directed Graph relation:
+    a. A parent cell contains the information of all the child cells, but the child cell doesn't contain any information of parent.
+    b. Tree is a special type of Directed Graph
+  2. Cycle Detection in Directed Graphs:
+    a. If A1 is dependent on B1, and then in future, if B1 is dependent on A1, then it will result in `Maximum call Stack size expected`.
+    b. This issue is due to recursion, and hence it will result in infinite loop.
+  3. To overcome this, we will have to write a Cycle Detection Algorithm
+  4. Implementation:
+    a. Storage: [3D Matrix]
+      i. Creating 3D array for rows and columns, for example: 26 columns, and 100 rows, as well as the child parent relationship address, the Array will be of storage[100][26][0,1]
+      ii. One node can have more than 1 dependency, but two nodes can not be dependent on each other.
+

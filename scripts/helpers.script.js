@@ -7,13 +7,13 @@ function encodeCellLocation(columnId, rowId) {
 
 function decodeCellLocation(encodedCell) {
   return [
-    Number(encodedCell.charCodeAt(0)) - 65,
     Number(encodedCell.slice(1) - 1),
+    Number(encodedCell.charCodeAt(0)) - 65,
   ];
 }
 
 function getCellAndCellProps(address) {
-  const [colId, rowId] = decodeCellLocation(address);
+  const [rowId, colId] = decodeCellLocation(address);
   let cell = document.querySelector(
     `.cell[rowId="${rowId}"][columnId="${colId}"]`
   );
