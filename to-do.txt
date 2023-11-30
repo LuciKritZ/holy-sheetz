@@ -23,5 +23,7 @@
       i. Creating 3D array for rows and columns, for example: 26 columns, and 100 rows, as well as the child parent relationship address, the Array will be of storage[100][26][0,1]
       ii. One node can have more than 1 dependency, but two nodes can not be dependent on each other.
 6. Color tracking for cyclic path using Cycle Detection Algorithm:
-  1. Delay in color: The operations happen in milliseconds, and it's not possible to track when the algorithm is running, hence we need a delay to show the stack trace of cyclic detection
+  1. Delay in color: The operations happen in milliseconds, and it's not possible to track when the algorithm is running, hence we need a delay to show the stack trace of cyclic detection.
+    a. We will use setTimeout for the same.
+    b. But, setTimeout is an asynchronous API, and to convert it to synchronous, we will use Promises.
   2. Code should run synchronously: Meaning, the code should not be executed further until the user accepts to continue without seeing the stack trace again.

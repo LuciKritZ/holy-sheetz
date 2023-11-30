@@ -166,7 +166,7 @@ for (let i = 0; i < allCells.length; i++) {
 }
 
 /**
- * addListenerToAttachCellProperties
+ * @function addListenerToAttachCellProperties
  * Adds click listener to perform the two way binding between the database and the UI.
  * @param {HTMLElement} cell
  * @returns {null}

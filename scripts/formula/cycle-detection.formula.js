@@ -27,7 +27,7 @@ for (let i = 0; i < DEFAULT_ROWS_COUNT; i++) {
 }
 
 /**
- * addOrRemoveChildInGraphMatrix
+ * @function addOrRemoveChildInGraphMatrix
  * Adds/Removes child parent relationship in graphComponentMatrix
  * @param {string} addOrRemoveChildInGraphMatrix.formula
  * @param {string} addOrRemoveChildInGraphMatrix.childAddress
@@ -70,8 +70,8 @@ function addOrRemoveChildInGraphMatrix({
 }
 
 /**
- * isGraphCyclic
- * Returns a boolean, true -> cycle detected, false -> cycle not detected
+ * @function isGraphCyclic
+ * Returns a null or an array of rowId and columnId, null -> cycle not detected, [rowId, columnId] -> cycle detected
  * @param {array} graphComponentMatrixSnapshot
  * @returns {boolean}
  */
@@ -109,17 +109,17 @@ function isGraphCyclic(graphComponentMatrixSnapshot) {
         });
 
         if (!!response) {
-          return true;
+          return [i, j];
         }
       }
     }
   }
 
-  return false;
+  return null;
 }
 
 /**
- * checkDFSCycleDetection
+ * @function checkDFSCycleDetection
  * Algo:
  * 1. Initial step: set visited(true) and dfsVisited(true)
  * 2. Ending step: set dfsVisited(false)
